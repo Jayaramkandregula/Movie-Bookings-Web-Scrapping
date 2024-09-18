@@ -1,0 +1,5 @@
+Seat Class,total_tickets,available_tickets,unavailable_tickets,total_ticket_cost,available_ticket_cost,unavailable_ticket_cost
+GOLD,173,173,0,34600,34600,0
+PLATINUM RECLINER,20,20,0,6000,6000,0
+SILVER,34,34,0,6120,6120,0
+TOTAL,227,227,0,46720,46720,0
