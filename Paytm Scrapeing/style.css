@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.theatre {
+    margin: 20px auto;
+    border: 1px solid #000;
+    padding: 20px;
+    width: fit-content;
+}
+
+.theatre h2 {
+    margin-bottom: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(20, 25px); /* 20 seats per row */
+    grid-gap: 5px;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.grid-item {
+    width: 25px;
+    height: 25px;
+    background-color: lightgray;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 25px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.grid-item.blocked {
+    background-color: blue;
+    color: white;
+}
+
+#theatre-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#theatre-list li {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    display: inline-block;
+}
+
+#theatre-list li:hover {
+    background-color: #ddd;
+}

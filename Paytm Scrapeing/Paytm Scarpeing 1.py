@@ -134,7 +134,7 @@ def update_movie_stats_csv(file_path, new_data):
 
 
 driver = webdriver.Edge()
-url = "https://paytm.com/movies/bengaluru/miraj-cinemas-tgn-lotus-elite-sunkadakatte-bengaluru-c/52080?encsessionid=52080-20540-ob0dbh-b_odqglzc&freeseating=false&fromsessions=true"
+url = "https://paytm.com/movies/seat-layout/bengaluru/tqh6qs8nl?encsessionid=43628-30693__1726880400__50__16698-ob17yh-43628&freeseating=false&fromsessions=true"
 # Open the Paytm movie booking page
 driver.get(url)
 

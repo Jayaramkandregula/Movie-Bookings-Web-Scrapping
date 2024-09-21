@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Booking</title>
+    <style>
+        .seat {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            display: inline-block;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .available {
+            background-color: green;
+            color: white;
+        }
+        .unavailable {
+            background-color: red;
+            color: white;
+        }
+        .row {
+            margin-bottom: 10px;
+        }
+        .metrics {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Select Your Seats</h1>
+
+<div id="seat-layout">
+    <!-- Seat layout will be dynamically generated here -->
+</div>
+
+<button id="generate-metrics">Generate Metrics</button>
+
+<div class="metrics">
+    <h2>Metrics:</h2>
+    <p>Total Selected Seats: <span id="total-count">0</span></p>
+    <p>Gold Seats: <span id="gold-count">0</span></p>
+    <p>Prime Seats: <span id="prime-count">0</span></p>
+    <p>Total Gold Revenue: $<span id="gold-revenue">0</span></p>
+    <p>Total Prime Revenue: $<span id="prime-revenue">0</span></p>
+</div>
+
+<script>
+    const seats = {{ seats|tojson }};
+
+    // Function to render the seat layout
+    function renderSeats() {
+        const seatLayout = document.getElementById('seat-layout');
+        seatLayout.innerHTML = '';
+
+        seats.forEach(seat => {
+            const seatDiv = document.createElement('div');
+            seatDiv.classList.add('seat');
+            seatDiv.classList.add(seat['Availability Status'].toLowerCase());
+            seatDiv.textContent = seat['Seat Number'];
+
+            seatDiv.addEventListener('click', function() {
+                toggleSeat(seat['Row'], seat['Column']);
+            });
+
+            seatLayout.appendChild(seatDiv);
+        });
+    }
+
+    // Function to toggle seat availability
+    function toggleSeat(row, column) {
+        fetch('/toggle-seat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ row, column }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update seats and rerender
+            renderSeats();
+        });
+    }
+
+    // Generate metrics
+    document.getElementById('generate-metrics').addEventListener('click', function() {
+        fetch('/metrics')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('total-count').textContent = data.total_count;
+            document.getElementById('gold-count').textContent = data.gold_count;
+            document.getElementById('prime-count').textContent = data.prime_count;
+            document.getElementById('gold-revenue').textContent = data.gold_revenue;
+            document.getElementById('prime-revenue').textContent = data.prime_revenue;
+        });
+    });
+
+    // Initial render of seats
+    renderSeats();
+</script>
+
+</body>
+</html>
