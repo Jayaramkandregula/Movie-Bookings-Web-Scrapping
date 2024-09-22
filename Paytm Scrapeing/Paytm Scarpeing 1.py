@@ -51,29 +51,29 @@ def calculate_metrics(df):
     grouped_df = df.groupby('Seat Class').agg(
         total_tickets=('Seat Class', 'size'),
         available_tickets=('Availability Status', lambda x: (x == 'Available').sum()),
-        unavailable_tickets=('Availability Status', lambda x: (x == 'Unavailable').sum()),
-        total_ticket_cost=('Price', 'sum'),
-        available_ticket_cost=('Price', lambda x: x[df['Availability Status'] == 'Available'].sum()),
-        unavailable_ticket_cost=('Price', lambda x: x[df['Availability Status'] == 'Unavailable'].sum())
+        booked_tickets=('Availability Status', lambda x: (x == 'Unavailable').sum()),
+        total_tickets_cost=('Price', 'sum'),
+        available_tickets_cost=('Price', lambda x: x[df['Availability Status'] == 'Available'].sum()),
+        booked_tickets_cost=('Price', lambda x: x[df['Availability Status'] == 'Unavailable'].sum())
     ).reset_index()
 
     # Calculate the total sum of all tickets' costs and counts
     total_tickets = grouped_df['total_tickets'].sum()
     available_tickets = grouped_df['available_tickets'].sum()
-    unavailable_tickets = grouped_df['unavailable_tickets'].sum()
-    total_costs = grouped_df['total_ticket_cost'].sum()
-    available_costs = grouped_df['available_ticket_cost'].sum()
-    unavailable_costs = grouped_df['unavailable_ticket_cost'].sum()
+    booked_tickets = grouped_df['booked_tickets'].sum()
+    total_tickets_cost = grouped_df['total_tickets_cost'].sum()
+    available_tickets_cost = grouped_df['available_tickets_cost'].sum()
+    booked_tickets_cost = grouped_df['booked_tickets_cost'].sum()
 
     # Create the total row
     total_row = pd.DataFrame({
         'Seat Class': ['TOTAL'],
         'total_tickets': [total_tickets],
         'available_tickets': [available_tickets],
-        'unavailable_tickets': [unavailable_tickets],
-        'total_ticket_cost': [total_costs],
-        'available_ticket_cost': [available_costs],
-        'unavailable_ticket_cost': [unavailable_costs]
+        'booked_tickets': [booked_tickets],
+        'total_tickets_cost': [total_tickets_cost],
+        'available_tickets_cost': [available_tickets_cost],
+        'booked_tickets_cost': [booked_tickets_cost]
     })
 
     # Drop columns with NaN values in total_row
@@ -91,10 +91,10 @@ columns = [
     'Date',
     'Time',
     'Total Tickets',
-    'Unavailable Tickets',
+    'Booked Tickets',
     'Available Tickets',
     'Total Tickets Cost',
-    'Total Unavailable Tickets Cost',
+    'Total Booked Tickets Cost',
     'Total Available Tickets Cost',
     'Updated Time'
 ]
@@ -134,7 +134,7 @@ def update_movie_stats_csv(file_path, new_data):
 
 
 driver = webdriver.Edge()
-url = "https://paytm.com/movies/seat-layout/bengaluru/tqh6qs8nl?encsessionid=43628-30693__1726880400__50__16698-ob17yh-43628&freeseating=false&fromsessions=true"
+url = "https://paytm.com/movies/seat-layout/bengaluru/bc7pi_knj?encsessionid=1025975-10781-oayy3b-1025975&freeseating=false&fromsessions=true"
 # Open the Paytm movie booking page
 driver.get(url)
 
@@ -246,11 +246,11 @@ for showtime_element in showtimes:
         'Date': bookings_date,
         'Time': show_time,
         'Total Tickets': metrics['total_tickets'],
-        'Unavailable Tickets': metrics['unavailable_tickets'],
+        'Booked Tickets': metrics['booked_tickets'],
         'Available Tickets': metrics['available_tickets'],
-        'Total Tickets Cost': metrics['total_ticket_cost'],
-        'Total Unavailable Tickets Cost': metrics['unavailable_ticket_cost'],
-        'Total Available Tickets Cost': metrics['available_ticket_cost'],
+        'Total Tickets Cost': metrics['total_tickets_cost'],
+        'Total Booked Tickets Cost': metrics['booked_tickets_cost'],
+        'Total Available Tickets Cost': metrics['available_tickets_cost'],
         'Updated Time': current_time
     }]
 
