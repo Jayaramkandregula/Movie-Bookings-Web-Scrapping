@@ -1,0 +1,5 @@
+Seat Class,Total Tickets,Total Booked Tickets,Total Available Tickets,Total Tickets Cost,Total Booked Tickets Cost,Total Available Tickets Cost
+Diamond Class_150.0,255,141,114,38250.0,21150.0,17100.0
+Gold Class_130.0,318,235,83,41340.0,30550.0,10790.0
+Silver Class_100,158,158,0,15800.0,15800.0,0.0
+TOTAL,731,534,197,95390.0,67500.0,27890.0

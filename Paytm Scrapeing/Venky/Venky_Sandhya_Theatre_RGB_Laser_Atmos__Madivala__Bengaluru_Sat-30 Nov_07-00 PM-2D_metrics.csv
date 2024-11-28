@@ -1,0 +1,6 @@
+Seat Class,total_tickets,available_tickets,booked_tickets,total_tickets_cost,available_tickets_cost,booked_tickets_cost
+BOXA,21,21,0,3150,3150,0
+BOXB,30,30,0,4500,4500,0
+GOLD,520,492,28,78000,73800,4200
+SILVER,185,171,14,27750,25650,2100
+TOTAL,756,714,42,113400,107100,6300

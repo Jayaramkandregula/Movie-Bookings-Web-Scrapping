@@ -1,0 +1,5 @@
+Seat Class,total_tickets,available_tickets,booked_tickets,total_tickets_cost,available_tickets_cost,booked_tickets_cost
+DIAMOND,255,124,131,38250,18600,19650
+GOLD,318,66,252,31800,6600,25200
+SILVER,158,147,11,15800,14700,1100
+TOTAL,731,337,394,85850,39900,45950
