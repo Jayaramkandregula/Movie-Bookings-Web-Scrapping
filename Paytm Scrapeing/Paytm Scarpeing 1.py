@@ -44,8 +44,6 @@ def process_prices(df):
 
     return df
 
-import pandas as pd
-
 def calculate_metrics(df):
     # Group by 'Seat Class' and calculate statistics
     grouped_df = df.groupby('Seat Class').agg(
@@ -134,7 +132,7 @@ def update_movie_stats_csv(file_path, new_data):
 
 
 driver = webdriver.Edge()
-url = "https://paytm.com/movies/seat-layout/bengaluru/bc7pi_knj?encsessionid=1025975-10781-oayy3b-1025975&freeseating=false&fromsessions=true"
+url = "https://paytm.com/movies/seat-layout/bengaluru/qfold_iir?encsessionid=43628-29137__1732858200__50__17276-oaxbpg-43628&freeseating=false&fromsessions=true"
 # Open the Paytm movie booking page
 driver.get(url)
 

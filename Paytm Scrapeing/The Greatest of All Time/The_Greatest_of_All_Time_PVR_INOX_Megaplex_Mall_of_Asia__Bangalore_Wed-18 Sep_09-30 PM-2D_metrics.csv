@@ -1,4 +1,0 @@
-Seat Class,total_tickets,available_tickets,unavailable_tickets,total_ticket_cost,available_ticket_cost,unavailable_ticket_cost
- class RECLINERS,24,24,0,12000,12000,0
- class ROYAL,23,19,4,12650,10450,2200
-TOTAL,47,43,4,24650,22450,2200

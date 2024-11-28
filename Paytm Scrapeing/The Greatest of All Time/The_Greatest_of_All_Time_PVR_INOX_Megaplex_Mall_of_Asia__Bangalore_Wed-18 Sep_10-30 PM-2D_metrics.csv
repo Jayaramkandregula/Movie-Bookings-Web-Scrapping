@@ -1,4 +1,0 @@
-Seat Class,total_tickets,available_tickets,unavailable_tickets,total_ticket_cost,available_ticket_cost,unavailable_ticket_cost
- class CLUB,93,82,11,18600,16400,2200
- class EXECUTIVE,78,78,0,14040,14040,0
-TOTAL,171,160,11,32640,30440,2200
